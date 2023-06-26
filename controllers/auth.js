@@ -20,11 +20,11 @@ const updateAvatar = async (req, res) => {
     const resultUpload = path.join(avatarsDir, filename);
     await Jimp.read(tempUpload)
         .then(image => {
-        return image.resize(avatarSize, avatarSize).write(resultUpload);
+            return image.resize(avatarSize, avatarSize).write(resultUpload);
         })
         .catch(err => {
-        console.error('Error resizing image:', err);
-        throw err;
+            console.error('Error resizing image:', err);
+            throw err;
         });
 
     await fs.unlink(tempUpload);
